@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\ArticleUpdatedAt;
 
 /**
  * @ApiResource(
@@ -19,9 +20,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *    "get" = {"normalization_context"={"groups"= {"article_details_read"}}},
  *    "put",
  *    "patch",
- *    "delete"
+ *    "delete",
+ *    "put_updated_at"={
+ *         "method"="PATCH",
+ *         "path"="/articles/{id}/updated-at",
+ *         "controller"=ArticleUpdatedAt::class
+ *     }
  *   }
- * 
  * )
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */

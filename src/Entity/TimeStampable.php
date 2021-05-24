@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 trait TimeStampable{
 
     /**
      * @var DateTimeInterface
+     * @Groups({"user_read", "user_details_read", "article_details_read" , "article_read"})
      * @ORM\column(type="datetime")
      */
     private $createdAt;
     
     /**
      * @var DateTimeInterface
+     * @Groups({"user_read", "user_details_read", "article_details_read" , "article_read"})
      * @ORM\column(type="datetime" , nullable="true")
      */
     private $updatedAt;
@@ -34,6 +38,6 @@ trait TimeStampable{
 
         return $this;
     }
-    
+
 }
 
